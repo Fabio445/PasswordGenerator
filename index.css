@@ -180,6 +180,7 @@ input:checked + .slider:before {
 /* Custom slider style */
 .length-slider {
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   height: 8px;
   background: #e5e7eb;
