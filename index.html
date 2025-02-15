@@ -9,85 +9,54 @@
   </head>
   <body>
     <main class="main-container">
-      <h1 class="title">Create a password</h1>
-
-      <!-- Password Display Area and Buttons -->
-      <div class="password-and-buttons">
-        <textarea
-          id="password"
-          class="password-display"
-          name="text"
-          type="text"
-          rows="2"
-          cols="50"
-        ></textarea>
-        <div class="buttons-container">
-          <button class="btn copy-btn" id="copy" onclick="copyPassword()">
-            <svg viewBox="0 0 512 512" class="svgIcon" height="1em">
-              <path
-                d="M288 448H64V224h64V160H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64zm-64-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z"
-              ></path>
-            </svg>
-            <p class="btn-text">COPY</p>
-          </button>
-
-          <button
-            class="btn generate-btn"
-            id="generate"
-            onclick="generatePassword()"
-          >
-            <svg viewBox="0 0 512 512" class="svgIcon" height="1em">
-              <path
-                d="M288 448H64V224h64V160H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64zm-64-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z"
-              ></path>
-            </svg>
-            <p class="btn-text">Generate</p>
-          </button>
+      <div class="card">
+        <div class="card-content">
+          <div class="password-edit-options">
+            <!-- Password Length Controls -->
+            <span>Customize your new password</span>
+            <div class="custom-line"></div>
+            <div class="length-control">
+              <label for="length">Characters</label>
+              <div class="length-control-inputs">
+                <input type="range" id="length-range" min="8" max="128" value="12" class="length-slider" />
+                <input type="number" id="length-number" min="8" max="128" value="12" />
+              </div>
+            </div>
+            <div class="custom-line"></div>
+            <!-- Character Set Options -->
+            <div class="char-options">
+              <label class="char-option">
+                <span>Numbers</span>
+                <label class="switch">
+                  <input type="checkbox" id="numbers" name="numbers" />
+                  <span class="slider"></span>
+                </label>
+              </label>
+              <label class="char-option">
+                <span>Symbols</span>
+                <label class="switch">
+                  <input type="checkbox" id="symbols" name="symbols" />
+                  <span class="slider"></span>
+                </label>
+              </label>
+            </div>
+          </div>
+          <div class="custom-line"></div>
+          <!-- Password Display and Buttons -->
+          <div class="password-and-buttons">
+            <p for="password">Generated Password</p>
+            <textarea id="password" class="password-display" name="text" rows="2" cols="50"></textarea>
+            <div class="buttons-container">
+              <button class="btn copy-btn" id="copy" onclick="copyPassword()">
+                <p class="btn-text">COPY</p>
+              </button>
+              <button class="btn generate-btn" id="generate" onclick="generatePassword()">
+                <p class="btn-text">Generate</p>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Password Edit Options -->
-      <div class="password-edit-options">
-        <!-- Password Length Controls -->
-        <div class="length-control">
-          <label for="length">Length</label>
-          <input
-            type="number"
-            id="length-number"
-            min="8"
-            max="128"
-            value="12"
-          />
-          <input type="range" id="length-range" min="8" max="128" value="12" />
-        </div>
-
-        <!-- Character Set Options -->
-        <div class="char-options">
-          <label class="char-option">
-            <input type="checkbox" id="upperCase" name="upperCase" checked />
-            <div class="checkbox-transition"></div>
-            <span>Uppercase</span>
-          </label>
-          <label class="char-option">
-            <input type="checkbox" id="lowerCase" name="lowerCase" checked />
-            <div class="checkbox-transition"></div>
-            <span>Lowercase</span>
-          </label>
-          <label class="char-option">
-            <input type="checkbox" id="numbers" name="numbers" checked />
-            <div class="checkbox-transition"></div>
-            <span>Numbers</span>
-          </label>
-          <label class="char-option">
-            <input type="checkbox" id="symbols" name="symbols" checked />
-            <div class="checkbox-transition"></div>
-            <span>Symbols</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Warning Message -->
-      <p id="warning-message" class="warning-message" style="color: red"></p>
     </main>
     <script src="index.js"></script>
   </body>

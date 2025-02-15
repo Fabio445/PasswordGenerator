@@ -7,34 +7,21 @@ const message = document.getElementById("warning-message");
 
 // Character sets
 const charsSets = {
-  upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  lowerCase: "abcdefghijklmnopqrstuvwxyz",
   numbers: "0123456789",
   symbols: "!@#$%^&*()_+",
 };
 
 // Get selected characters
 function defineChars() {
-  let chars = "";
+  const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+  let chars = upperCase + lowerCase;
   checkboxes.forEach((checkbox) => {
     if (checkbox.checked) chars += charsSets[checkbox.id];
   });
   if (!chars) alert("Please select at least one character set.");
   return chars;
 }
-
-// Ensure at least one checkbox is selected
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", () => {
-    if (!Array.from(checkboxes).some((cb) => cb.checked)) {
-      checkbox.checked = true;
-      message.textContent = "At least one character set must be selected!";
-      setTimeout(() => (message.textContent = ""), 3000);
-    } else {
-      message.textContent = "";
-    }
-  });
-});
 
 // Generate password
 function generatePassword() {
@@ -82,6 +69,11 @@ lengthNumber.addEventListener("change", () => {
 lengthRange.addEventListener("input", () => {
   lengthNumber.value = lengthRange.value;
   generatePassword();
+});
+
+textArea.addEventListener("input", function () {
+  this.style.height = "auto"; // Resetta l'altezza
+  this.style.height = this.scrollHeight + "px"; // Imposta l'altezza in base al contenuto
 });
 
 // Initial password generation
